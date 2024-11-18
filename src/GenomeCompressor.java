@@ -52,7 +52,7 @@ public class GenomeCompressor {
         map[1] = 'C';
         map[2] = 'G';
         map[3] = 'T';
-        // Turns each 2bit code back it their letter counterparts
+        // Turns each 2bit code back to their letter counterparts
         for(int i = 0; i < length; i++) {
             BinaryStdOut.write(map[BinaryStdIn.readInt(2)]);
         }
