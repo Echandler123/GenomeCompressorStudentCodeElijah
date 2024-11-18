@@ -60,7 +60,6 @@ public class GenomeCompressor {
     }
 
 
-
     /**
      * Main, when invoked at the command line, calls {@code compress()} if the command-line
      * argument is "-" an {@code expand()} if it is "+".
