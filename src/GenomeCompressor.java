@@ -36,7 +36,7 @@ public class GenomeCompressor {
         map['T'] = 3;
         // Turns each letter in the sequence given into its 2bit code
         for(int i = 0; i < length; i++){
-            BinaryStdOut.write(map[Integer.parseInt(sequence.substring(i,i+1))], 2);
+            BinaryStdOut.write(map[sequence.charAt(i)], 2);
         }
         BinaryStdOut.close();
     }
