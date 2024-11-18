@@ -24,11 +24,19 @@ public class GenomeCompressor {
      * { A, C, T, G } from standard input; compresses and writes the results to standard output.
      */
     public static void compress() {
-        String s = BinaryStdIn.readString();
-        int n = s.length();
-        BinaryStdOut.write(n);
-        for(int i = 0; i < n; i++){
-            BinaryStdOut.write(num(s.substring(i,i+1)), 2);
+        String sequence = BinaryStdIn.readString();
+        int length = sequence.length();
+        // Writes the length as its default 32bit integer value
+        BinaryStdOut.write(length);
+        // Map of each letter to its integer counterpart
+        int[] map = new int[256];
+        map['A'] = 0;
+        map['C'] = 1;
+        map['G'] = 2;
+        map['T'] = 3;
+        // Turns each letter in the sequence given into its 2bit code
+        for(int i = 0; i < length; i++){
+            BinaryStdOut.write(map[Integer.parseInt(sequence.substring(i,i+1))], 2);
         }
         BinaryStdOut.close();
     }
@@ -38,27 +46,19 @@ public class GenomeCompressor {
      */
     public static void expand() {
         int length = BinaryStdIn.readInt();
+        // Map from its integer version to back to the letter itself
+        char[] map = new char[4];
+        map[0] = 'A';
+        map[1] = 'C';
+        map[2] = 'G';
+        map[3] = 'T';
+        // Turns each 2bit code back it their letter counterparts
         for(int i = 0; i < length; i++) {
-
+            BinaryStdOut.write(map[BinaryStdIn.readInt(2)]);
         }
-
         BinaryStdOut.close();
     }
-    public static int num(String S) {
-        if(S.equals("A")){
-            return 0;
-        }
-        else if(S.equals("C")){
-            return 1;
-        }
-        else if(S.equals("G")){
-            return 2;
-        }
-        else {
-            return 3;
-        }
 
-    }
 
 
     /**
